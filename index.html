@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
+      <div class="input">
+        <input type="text" class="inputValue" placeholder="Enter a city">
+        <input type="submit" value="Submit" class="button">
+      </div>
+<!-- displaying the content-->
+      <div class="display">
+        <h1 class="name"></h1>
+        <img class="maincityIcon"></img>
+        <h4 class="mainDate"></h4>
+        <p class="desc"></p>
+        <p class="temp"></p>
+      </div>
+
+    <!-- display the 5 day forecast -->
+    <div class="fivedays">
+      <section class="day1">
+        <img class="day1icon"></img>
+        <h4 class="day1Date"></h4>
+        <p class="day1Temp"></p>
+        <p class="day1Wind"></p>
+        <p class="day1Humidity"></p>
+      </section>
+
+      <section class="day2">
+        <img class="day2icon"></img>
+        <h4 class="day2Date"></h4>
+        <p class="day2Temp"></p>
+        <p class="day2Wind"></p>
+        <p class="day2Humidity"></p>
+      </section>
+
+      <section class="day3">
+        <img class="day3icon"></img>
+        <h4 class="day3Date"></h4>
+        <p class="day3Temp"></p>
+        <p class="day3Wind"></p>
+        <p class="day3Humidity"></p>
+      </section>
+
+      <section class="day4">
+        <img class="day4icon"></img>
+        <h4 class="day4Date"></h4>
+        <p class="day4Temp"></p>
+        <p class="day4Wind"></p>
+        <p class="day4Humidity"></p>
+      </section>
+
+      <section class="day5">
+        <img class="day5icon"></img>
+        <h4 class="day5Date"></h4>
+        <p class="day5Temp"></p>
+        <p class="day5Wind"></p>
+        <p class="day5Humidity"></p>
+      </section>
+
+    </div>
+
+    <div id="displayHistory"></div>
+
+
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
+        <script src="assets/script/script.js" async defer></script>
+    </body>
+</html>
