@@ -56,3 +56,11 @@ margin-top: 100px;
     background-color: blanchedalmond;
     
  }
+
+ section{
+    border: 2px solid blue;
+    width: max-content;
+    height: max-content;
+    padding: 50px;
+    background-color: gainsboro;
+ }
