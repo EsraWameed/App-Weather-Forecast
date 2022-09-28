@@ -241,16 +241,16 @@ var day5Temperature = dailyWeather[4][0].main.temp;
           windDay5.innerHTML=day5Windspeed;
           HumidDay5.innerHTML=day5Humidity;
 
-          var unixTimeDay5= dailyWeather[4][1]['dt'];
+          var unixTimeDay5= dailyWeather[4][0]['dt'];
           console.log(unixTimeDay5);
           var dateTimeString = moment.unix(unixTimeDay5).format("DD-MM-YYYY");
 console.log(dateTimeString);
 day5Date.innerHTML = dateTimeString
 
-console.log(dailyWeather[4][4].weather[0].icon)
+// console.log(dailyWeather[4][4].weather[0].icon)
 
-ourDay5icon = dailyWeather[4][0].weather[0].icon
-daily5Icon.setAttribute("src", " https://openweathermap.org/img/w/"+ourDay5icon+".png") 
+ourDay5icon = dailyWeather[3][4].weather[0].icon
+daily5Icon.setAttribute("src", " https://openweathermap.org/img/w/"+ourDay5icon+".png");
 
 
 //pull out date time strong and access jus
