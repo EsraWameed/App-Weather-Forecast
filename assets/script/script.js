@@ -11,6 +11,10 @@ var cityName = document.querySelector('.name');
 var desc = document.querySelector('.desc');
 var temp = document.querySelector('.temp');
 
+//new
+var currentWind = document.querySelector(".mainWind");
+var currentHumid = document.querySelector(".mainHumidity");
+
 // global variable forday 1 forecast 
 var tempDay1 = document.querySelector('.day1Temp');
 var windDay1 = document.querySelector('.day1Wind');
@@ -70,7 +74,12 @@ button.addEventListener('click', function(){
         var maincityIcon = data['weather'][0]['icon'];
         var tempValue = data['main']['temp'];
         var descValue = data['weather'][0]['description'];
-
+        console.log(data.wind.speed)
+        var mainWindspeed = data.wind.speed
+        currentWind.innerHTML = mainWindspeed
+        console.log(data.main.humidity)
+        var currentumidity = data.main.humidity
+        currentHumid.innerHTML = currentumidity
         
         
         maincityIcons.setAttribute("src", " https://openweathermap.org/img/w/"+maincityIcon+".png") 
