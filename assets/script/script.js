@@ -2,7 +2,7 @@ let key = "126b93916d5b8e5d67aa8207dcd2d65d"
 // grab all the info we will be using
 
 
-var displaySearchedhistory = document.getElementById('displayHistory');
+var displaySearchedhistory = document.querySelector('#displayHistory');
 // an array to push searched cities
 var searchedCity=[];
 var button = document.querySelector('.button');
@@ -53,59 +53,53 @@ var daily3Icon= document.querySelector('.day3icon')
 var daily4Icon= document.querySelector('.day4icon')
 var daily5Icon= document.querySelector('.day5icon')
 
+function fetchCurrentWeather(value){
+  setHistory(value);
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${key}&units=metric`)
+  // we want the response in json format. no colon cause full function
 
+      .then(response => response.json())
+      .then((data)=> {
+          getForecast(data)
+         
+
+      var citynameValue = data['name'];
+      var maincityIcon = data['weather'][0]['icon'];
+      var tempValue = data['main']['temp'];
+      var descValue = data['weather'][0]['description'];
+      console.log(data.wind.speed)
+      var mainWindspeed = data.wind.speed
+      currentWind.innerHTML = mainWindspeed+" MPH"
+      console.log(data.main.humidity)
+      var currentumidity = data.main.humidity
+      currentHumid.innerHTML = "Humidity: "+ currentumidity+ " %"
+      
+      
+      maincityIcons.setAttribute("src", " https://openweathermap.org/img/w/"+maincityIcon+".png") 
+
+      cityName.innerHTML = citynameValue;
+      temp.innerHTML = tempValue+" °C";
+      desc.innerHTML = descValue;
+      
+      var unixTime= data['dt'];
+      
+
+const dateTimeString = moment.unix(unixTime).format("DD-MM-YYYY");
+
+     currentTime.innerHTML = dateTimeString;
+      
+
+
+      })
+  
+  //to catch the error 
+      .catch (err => alert("Wrong City Name!"))
+}
 
 
 button.addEventListener('click', function(){
-  //setting searched city to local storage
- 
- 
-  setHistory(inputValue.value);
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputValue.value}&appid=${key}&units=metric`)
-    // we want the response in json format. no colon cause full function
-
-        .then(response => response.json())
-        .then((data)=> {
-            getForecast(data)
-            console.log(data)
-            console.log(data.coord.lon)
-
-        var citynameValue = data['name'];
-        var maincityIcon = data['weather'][0]['icon'];
-        var tempValue = data['main']['temp'];
-        var descValue = data['weather'][0]['description'];
-        console.log(data.wind.speed)
-        var mainWindspeed = data.wind.speed
-        currentWind.innerHTML = mainWindspeed+" MPH"
-        console.log(data.main.humidity)
-        var currentumidity = data.main.humidity
-        currentHumid.innerHTML = "Humidity: "+ currentumidity+ " %"
-        
-        
-        maincityIcons.setAttribute("src", " https://openweathermap.org/img/w/"+maincityIcon+".png") 
-
-        cityName.innerHTML = citynameValue;
-        temp.innerHTML = tempValue+" °C";
-        desc.innerHTML = descValue;
-        
-        var unixTime= data['dt'];
-        console.log(unixTime);
-
-const dateTimeString = moment.unix(unixTime).format("DD-MM-YYYY");
-console.log(dateTimeString);
-       currentTime.innerHTML = dateTimeString;
-        
-
-
-        })
-    
-    //to catch the error 
-        .catch (err => alert("Wrong City Name!"))
-
-
+  fetchCurrentWeather(inputValue.value)
 })
-
-// 
 
 //--------------------------------------------------------------------------------------
 // converting dt time
@@ -123,13 +117,12 @@ function getForecast(weatherData){
     let lat = weatherData.coord.lat
     let URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}&units=metric`
 
-    console.log(lon);
-    console.log(lat);
+    
 
     fetch(URL)
     .then(response => response.json())
     .then((data)=>{
-        console.log(data);
+       
 
         //credit to Michael Sinn, code for splitting into 5 days 136-156
 
@@ -154,13 +147,11 @@ function getForecast(weatherData){
           if (currentDay.length !== 0) dailyWeather.push(currentDay);
           if (dailyWeather.length > 5) dailyWeather.shift();
 
-          console.log(dailyWeather);
+        
 
       // to display the 5 day forecast. temp, wind, humidity
       //day 1
-      console.log(dailyWeather[0][4].main.temp);
-      console.log(dailyWeather[0][4].wind.speed);
-      console.log(dailyWeather[0][4].main.humidity);
+    
 
       var day1Temperature = dailyWeather[0][4].main.temp;
       var day1Windspeed = dailyWeather[0][4].wind.speed;
@@ -170,9 +161,9 @@ function getForecast(weatherData){
           HumidDay1.innerHTML="Humidity: "+day1Humidity+ " %";
           //-------------------
           var unixTimeDay1= dailyWeather[0][4]['dt'];
-          console.log(unixTimeDay1);
+        
           var dateTimeString = moment.unix(unixTimeDay1).format("DD-MM-YYYY");
-console.log(dateTimeString);
+
           day1Date.innerHTML = dateTimeString
 
     ourDay1icon= dailyWeather[0][4].weather[0].icon;
@@ -191,12 +182,10 @@ var day2Temperature = dailyWeather[1][4].main.temp;
           HumidDay2.innerHTML="Humidity: "+day2Humidity+" %";
 
           var unixTimeDay2= dailyWeather[1][4]['dt'];
-          console.log(unixTimeDay2);
+        
           var dateTimeString = moment.unix(unixTimeDay2).format("DD-MM-YYYY");
-console.log(dateTimeString);
 day2Date.innerHTML = dateTimeString
 
-console.log(dailyWeather[1][4].weather[0].icon)
 
 ourDay2icon= dailyWeather[1][4].weather[0].icon
 daily2Icon.setAttribute("src", " https://openweathermap.org/img/w/"+ourDay1icon+".png") 
@@ -211,13 +200,10 @@ var day3Temperature = dailyWeather[2][4].main.temp;
           HumidDay3.innerHTML="Humidity: "+day3Humidity+" %";
 
           var unixTimeDay3= dailyWeather[2][4]['dt'];
-          console.log(unixTimeDay3);
           var dateTimeString = moment.unix(unixTimeDay3).format("DD-MM-YYYY");
-console.log(dateTimeString);
 day3Date.innerHTML = dateTimeString
 
 
-console.log(dailyWeather[2][4].weather[0].icon)
 ourDay3icon = dailyWeather[2][4].weather[0].icon
 daily3Icon.setAttribute("src", " https://openweathermap.org/img/w/"+ourDay3icon+".png") 
 
@@ -232,12 +218,9 @@ var day4Temperature = dailyWeather[3][4].main.temp;
           HumidDay4.innerHTML="Humidity: "+day4Humidity+" %";
 
           var unixTimeDay4= dailyWeather[3][4]['dt'];
-          console.log(unixTimeDay4);
           var dateTimeString = moment.unix(unixTimeDay4).format("DD-MM-YYYY");
-console.log(dateTimeString);
 day4Date.innerHTML = dateTimeString
 
-console.log(dailyWeather[3][4].weather[0].icon)
 
 ourDay4icon = dailyWeather[3][4].weather[0].icon
 daily4Icon.setAttribute("src", " https://openweathermap.org/img/w/"+ourDay4icon+".png") 
@@ -251,9 +234,7 @@ var day5Temperature = dailyWeather[4][0].main.temp;
           HumidDay5.innerHTML="Humidity: "+day5Humidity+" %";
 
           var unixTimeDay5= dailyWeather[4][0]['dt'];
-          console.log(unixTimeDay5);
           var dateTimeString = moment.unix(unixTimeDay5).format("DD-MM-YYYY");
-console.log(dateTimeString);
 day5Date.innerHTML = dateTimeString
 
 // console.log(dailyWeather[4][4].weather[0].icon)
@@ -275,6 +256,9 @@ daily5Icon.setAttribute("src", " https://openweathermap.org/img/w/"+ourDay5icon+
 
 function setHistory(search){
   searchedCity.push(search);
+  if( searchedCity.length>5){
+    searchedCity.shift()
+  }
   localStorage.setItem("searched-city",JSON.stringify(searchedCity));
   getHistory();
 
@@ -296,3 +280,12 @@ function getHistory(){
 }
 //add event listener to search container. use match event 
 // try to make 
+
+displaySearchedhistory.addEventListener("click", e=>{
+  
+  if (e.target.className==="history-button"){
+    fetchCurrentWeather(e.target.textContent)
+    console.log(e.target.textContent)
+  }
+  
+})
