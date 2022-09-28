@@ -131,7 +131,7 @@ function getForecast(weatherData){
     .then((data)=>{
         console.log(data);
 
-        //here lol
+        //credit to Michael Sinn, code for splitting into 5 days 136-156
 
         let dailyWeather = [];
           let currentDay = [];
