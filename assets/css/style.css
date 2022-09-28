@@ -63,4 +63,19 @@ margin-top: 100px;
     height: max-content;
     padding: 50px;
     background-color: gainsboro;
+    margin-top: -90px;
  }
+
+ .display{
+    background-color: gainsboro;
+    border: 2px solid black;
+    padding: 50px;
+    margin-top: -60px;
+ }
+
+.header{
+    display: flex;
+    background-color: blanchedalmond;
+    justify-content: center;
+    min-height: 70px;
+}

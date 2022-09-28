@@ -76,16 +76,16 @@ button.addEventListener('click', function(){
         var descValue = data['weather'][0]['description'];
         console.log(data.wind.speed)
         var mainWindspeed = data.wind.speed
-        currentWind.innerHTML = mainWindspeed
+        currentWind.innerHTML = mainWindspeed+" MPH"
         console.log(data.main.humidity)
         var currentumidity = data.main.humidity
-        currentHumid.innerHTML = currentumidity
+        currentHumid.innerHTML = "Humidity: "+ currentumidity+ " %"
         
         
         maincityIcons.setAttribute("src", " https://openweathermap.org/img/w/"+maincityIcon+".png") 
 
         cityName.innerHTML = citynameValue;
-        temp.innerHTML = tempValue;
+        temp.innerHTML = tempValue+" °C";
         desc.innerHTML = descValue;
         
         var unixTime= data['dt'];
@@ -165,9 +165,9 @@ function getForecast(weatherData){
       var day1Temperature = dailyWeather[0][4].main.temp;
       var day1Windspeed = dailyWeather[0][4].wind.speed;
       var day1Humidity = dailyWeather[0][4].main.humidity;
-          tempDay1.innerHTML= day1Temperature;
-          windDay1.innerHTML=day1Windspeed;
-          HumidDay1.innerHTML=day1Humidity;
+          tempDay1.innerHTML= day1Temperature+" °C";
+          windDay1.innerHTML=day1Windspeed+" MPH";
+          HumidDay1.innerHTML="Humidity: "+day1Humidity+ " %";
           //-------------------
           var unixTimeDay1= dailyWeather[0][4]['dt'];
           console.log(unixTimeDay1);
@@ -186,9 +186,9 @@ console.log(dateTimeString);
 var day2Temperature = dailyWeather[1][4].main.temp;
       var day2Windspeed = dailyWeather[1][4].wind.speed;
       var day2Humidity = dailyWeather[1][4].main.humidity;
-          tempDay2.innerHTML= day2Temperature;
-          windDay2.innerHTML=day2Windspeed;
-          HumidDay2.innerHTML=day2Humidity;
+          tempDay2.innerHTML= day2Temperature+" °C";
+          windDay2.innerHTML=day2Windspeed+" MPH";
+          HumidDay2.innerHTML="Humidity: "+day2Humidity+" %";
 
           var unixTimeDay2= dailyWeather[1][4]['dt'];
           console.log(unixTimeDay2);
@@ -206,9 +206,9 @@ daily2Icon.setAttribute("src", " https://openweathermap.org/img/w/"+ourDay1icon+
 var day3Temperature = dailyWeather[2][4].main.temp;
       var day3Windspeed = dailyWeather[2][4].wind.speed;
       var day3Humidity = dailyWeather[2][4].main.humidity;
-          tempDay3.innerHTML= day3Temperature;
-          windDay3.innerHTML=day3Windspeed;
-          HumidDay3.innerHTML=day3Humidity;
+          tempDay3.innerHTML= day3Temperature+" °C";
+          windDay3.innerHTML=day3Windspeed+" MPH";
+          HumidDay3.innerHTML="Humidity: "+day3Humidity+" %";
 
           var unixTimeDay3= dailyWeather[2][4]['dt'];
           console.log(unixTimeDay3);
@@ -227,9 +227,9 @@ daily3Icon.setAttribute("src", " https://openweathermap.org/img/w/"+ourDay3icon+
 var day4Temperature = dailyWeather[3][4].main.temp;
       var day4Windspeed = dailyWeather[3][4].wind.speed;
       var day4Humidity = dailyWeather[3][4].main.humidity;
-          tempDay4.innerHTML= day4Temperature;
-          windDay4.innerHTML=day4Windspeed;
-          HumidDay4.innerHTML=day4Humidity;
+          tempDay4.innerHTML= day4Temperature+" °C";
+          windDay4.innerHTML=day4Windspeed+" MPH";
+          HumidDay4.innerHTML="Humidity: "+day4Humidity+" %";
 
           var unixTimeDay4= dailyWeather[3][4]['dt'];
           console.log(unixTimeDay4);
@@ -246,9 +246,9 @@ daily4Icon.setAttribute("src", " https://openweathermap.org/img/w/"+ourDay4icon+
 var day5Temperature = dailyWeather[4][0].main.temp;
       var day5Windspeed = dailyWeather[4][0].wind.speed;
       var day5Humidity = dailyWeather[4][0].main.humidity;
-          tempDay5.innerHTML= day5Temperature;
-          windDay5.innerHTML=day5Windspeed;
-          HumidDay5.innerHTML=day5Humidity;
+          tempDay5.innerHTML= day5Temperature+" °C";
+          windDay5.innerHTML=day5Windspeed+" MPH";
+          HumidDay5.innerHTML="Humidity: "+day5Humidity+" %";
 
           var unixTimeDay5= dailyWeather[4][0]['dt'];
           console.log(unixTimeDay5);
