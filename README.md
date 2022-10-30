@@ -17,6 +17,6 @@ This application was created to allow users to input a city name and retreive cu
 Credits to https://github.com/MichaelSinn for script.js lines 136-156: Splitting data over 5 days
 
 ## Deployed Application
-https://esrawameed.github.io/App-Weather-Forecast/
+https://esrawameed.github.io/WeatherBoard/
 
 ![Alt text](assets/images/image%201.png "Final Look")
